@@ -19,6 +19,19 @@ if __name__ == '__main__':
             print("Commit")
             conn.commit()
             count = 1
+
+    cursor.execute("select id from pkg_md2_md_iso order by id")
+    metadata_rows = cursor.fetchall()
+    count = 1
+    load_with_error = []
+    for row in metadata_rows:
+        print(str(count) + ' - ' + str(row[0]))
+        cursor.execute("delete from pkg_md2_md_iso where id = " + str(row[0]))
+        count = count + 1
+        if count > 50:
+            print("Commit")
+            conn.commit()
+            count = 1
     conn.commit()
     cursor.close()
     if conn is not None:
