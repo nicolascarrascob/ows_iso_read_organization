@@ -1,9 +1,7 @@
 import psycopg2
 import time
 
-HOST = "http://localhost:81"
-
-RESOURCES = '/home/nicolas/biosoft/geoportal/20210604_gpt_resources'
+RESOURCES = '.'
 
 
 def insert_parse_xml_job(id_iso):
